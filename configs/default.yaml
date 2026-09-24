@@ -1,0 +1,30 @@
+# Data: S&P 500 daily open/high/low/close 1999-2018 (Yahoo Finance via the arch package), CBOE VIX.
+
+seed: 20260101
+horizons: [1, 5, 22]
+first_test_year: 2005        # hyperparameters are chosen on data before this year only
+validation_years: [2003, 2004]
+
+reservoir:
+  nodes: 200
+  ensemble: 10               # independent random reservoirs averaged
+  washout: 250
+  esn_grid:
+    spectral_radius: [0.5, 0.8, 0.95]
+    leak: [0.05, 0.2, 0.5, 1.0]
+    input_scale: [0.1, 0.3, 1.0]
+  ring_grid:
+    feedback: [0.5, 0.8, 0.95]
+    input_scale: [0.05, 0.2, 0.5]
+    phase: [0.0, 0.4]
+  ridge: [0.001, 0.01, 0.1, 1.0]
+  selection_seeds: 2
+
+physics:                     # checks of the reservoir implementation on textbook tasks
+  nodes: 300
+  mackey_glass: {length: 6000, train: 3000, horizons: [1, 20, 84]}
+  memory: {nodes: 100, k_max: 150, radii: [0.2, 0.4, 0.6, 0.8, 0.9, 1.0, 1.1, 1.3]}
+
+sensitivity:
+  sizes: [25, 50, 100, 200, 400]
+  horizon: 1
