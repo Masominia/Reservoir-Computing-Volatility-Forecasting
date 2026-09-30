@@ -1,0 +1,473 @@
+{
+  "physics": {
+    "mackey_glass_nrmse": {
+      "linear AR(50)": {
+        "1 step ahead": 0.0015684907957283917,
+        "20 steps ahead": 0.45893869100273027,
+        "84 steps ahead": 0.5411239230164907
+      },
+      "echo state network": {
+        "1 step ahead": 0.0007377708384375678,
+        "20 steps ahead": 0.0017708830801245591,
+        "84 steps ahead": 0.08308652699003669
+      },
+      "photonic ring reservoir": {
+        "1 step ahead": 0.0006188350357616436,
+        "20 steps ahead": 0.00623768359663249,
+        "84 steps ahead": 0.1643467099491607
+      }
+    },
+    "memory_capacity": {
+      "echo state network": {
+        "0.2": 5.548185622759619,
+        "0.4": 9.370971249367248,
+        "0.6": 14.548135514284217,
+        "0.8": 21.16840920925319,
+        "0.9": 25.16599913147472,
+        "1.0": 26.857474955544728,
+        "1.1": 22.318864739713337,
+        "1.3": 16.6896970164756
+      },
+      "photonic ring reservoir": {
+        "0.2": 6.096649981330068,
+        "0.4": 10.817928969589454,
+        "0.6": 18.33918554992603,
+        "0.8": 30.907196664282356,
+        "0.9": 44.17254105617271,
+        "1.0": 70.53825307014993,
+        "1.1": 1.8429867750599835,
+        "1.3": 0.6657956681655588
+      }
+    }
+  },
+  "data": {
+    "days": 5030,
+    "start": "1999-01-05",
+    "end": "2018-12-31",
+    "gk_vol_pct": 14.840231345511517,
+    "close_to_close_vol_pct": 19.108456641794568,
+    "logv_autocorr": [
+      0.6481707830595156,
+      0.573747730669968,
+      0.469429655603682,
+      0.35696902143992065
+    ]
+  },
+  "selection": {
+    "echo state network h=1": {
+      "selected": "spectral radius 0.5, leak 0.5, input scale 0.3",
+      "ridge": "0.001",
+      "validation MSE": 0.539315473453412
+    },
+    "echo state network h=5": {
+      "selected": "spectral radius 0.95, leak 1, input scale 0.1",
+      "ridge": "0.001",
+      "validation MSE": 0.15872564711370013
+    },
+    "echo state network h=22": {
+      "selected": "spectral radius 0.5, leak 0.5, input scale 1",
+      "ridge": "0.001",
+      "validation MSE": 0.27480353765622556
+    },
+    "photonic ring reservoir h=1": {
+      "selected": "feedback 0.8, input scale 0.05, phase 0",
+      "ridge": "0.1",
+      "validation MSE": 0.5438705383829188
+    },
+    "photonic ring reservoir h=5": {
+      "selected": "feedback 0.8, input scale 0.05, phase 0.4",
+      "ridge": "0.001",
+      "validation MSE": 0.16060548630928909
+    },
+    "photonic ring reservoir h=22": {
+      "selected": "feedback 0.95, input scale 0.2, phase 0.4",
+      "ridge": "0.01",
+      "validation MSE": 0.27165171064778443
+    }
+  },
+  "oos": {
+    "n_days": 3522,
+    "mse_ratio": {
+      "h = 1": {
+        "Random walk": 1.4519844846448187,
+        "EWMA (RiskMetrics)": 1.1433217209417652,
+        "GARCH(1,1)": 1.137066090311818,
+        "HAR": 1.0,
+        "HAR-X (VIX, leverage)": 0.9007254150422226,
+        "ESN + HAR-X features": 0.8658905084393905,
+        "Echo state network": 0.868298072882421,
+        "Photonic ring reservoir": 0.8703123851759413,
+        "Pool: HAR-X + ESN": 0.869174076655017
+      },
+      "h = 5": {
+        "Random walk": 1.3201861151897878,
+        "EWMA (RiskMetrics)": 1.1714407962253648,
+        "GARCH(1,1)": 1.1714426850645951,
+        "HAR": 1.0,
+        "HAR-X (VIX, leverage)": 0.8651378601068085,
+        "ESN + HAR-X features": 0.8742316573331502,
+        "Echo state network": 0.868111177601836,
+        "Photonic ring reservoir": 0.8806064708224649,
+        "Pool: HAR-X + ESN": 0.8480408291930425
+      },
+      "h = 22": {
+        "Random walk": 1.5119246015743228,
+        "EWMA (RiskMetrics)": 1.088185751485201,
+        "GARCH(1,1)": 1.1104056847249966,
+        "HAR": 1.0,
+        "HAR-X (VIX, leverage)": 0.9054683924480876,
+        "ESN + HAR-X features": 0.97878042129398,
+        "Echo state network": 0.9961890447568466,
+        "Photonic ring reservoir": 1.02157604976601,
+        "Pool: HAR-X + ESN": 0.9225117682295262
+      }
+    },
+    "qlike_ratio": {
+      "h = 1": {
+        "Random walk": 1.3975607285657614,
+        "EWMA (RiskMetrics)": 1.1028732509617536,
+        "GARCH(1,1)": 1.073381936572798,
+        "HAR": 1.0,
+        "HAR-X (VIX, leverage)": 0.8811332179823433,
+        "ESN + HAR-X features": 0.8463389499726783,
+        "Echo state network": 0.843922695453938,
+        "Photonic ring reservoir": 0.8497141403867944,
+        "Pool: HAR-X + ESN": 0.847200436262051
+      },
+      "h = 5": {
+        "Random walk": 1.3907340170230769,
+        "EWMA (RiskMetrics)": 1.1263101472171109,
+        "GARCH(1,1)": 1.0825324328542478,
+        "HAR": 1.0,
+        "HAR-X (VIX, leverage)": 0.8492145387019165,
+        "ESN + HAR-X features": 0.8474407617226895,
+        "Echo state network": 0.8354938674095178,
+        "Photonic ring reservoir": 0.8393547156309399,
+        "Pool: HAR-X + ESN": 0.8259255460517564
+      },
+      "h = 22": {
+        "Random walk": 1.8099709858843167,
+        "EWMA (RiskMetrics)": 1.043006691820038,
+        "GARCH(1,1)": 1.0090745216094006,
+        "HAR": 1.0,
+        "HAR-X (VIX, leverage)": 0.9092690948884784,
+        "ESN + HAR-X features": 0.9903105911105547,
+        "Echo state network": 0.9985950304314384,
+        "Photonic ring reservoir": 0.9859689500365276,
+        "Pool: HAR-X + ESN": 0.9244760845965853
+      }
+    },
+    "r2": {
+      "h = 1": {
+        "Random walk": 0.3477629426803891,
+        "EWMA (RiskMetrics)": 0.48641545228421235,
+        "GARCH(1,1)": 0.4892255058053788,
+        "HAR": 0.5507961247401623,
+        "HAR-X (VIX, leverage)": 0.5953906530180079,
+        "ESN + HAR-X features": 0.6110386280583145,
+        "Echo state network": 0.6099571407805675,
+        "Photonic ring reservoir": 0.6090523038923346,
+        "Pool: HAR-X + ESN": 0.6095636364911752
+      },
+      "h = 5": {
+        "Random walk": 0.5572547435264086,
+        "EWMA (RiskMetrics)": 0.6071388345923734,
+        "GARCH(1,1)": 0.607138201140317,
+        "HAR": 0.6646342122679096,
+        "HAR-X (VIX, leverage)": 0.7098623600484251,
+        "ESN + HAR-X features": 0.7068126115781371,
+        "Echo state network": 0.7088652110845277,
+        "Photonic ring reservoir": 0.704674717230648,
+        "Pool: HAR-X + ESN": 0.7155961192887001
+      },
+      "h = 22": {
+        "Random walk": 0.3914123203625217,
+        "EWMA (RiskMetrics)": 0.5619778652841843,
+        "GARCH(1,1)": 0.5530337832856336,
+        "HAR": 0.5974748482802821,
+        "HAR-X (VIX, leverage)": 0.6355261979524245,
+        "ESN + HAR-X features": 0.6060162624183513,
+        "Echo state network": 0.5990088536177295,
+        "Photonic ring reservoir": 0.5887899455747068,
+        "Pool: HAR-X + ESN": 0.6286658105301848
+      }
+    },
+    "dm": {
+      "Echo state network | HAR | 1": {
+        "DM (MSE)": -9.755150762675113,
+        "p (MSE)": 3.341660780823173e-22,
+        "DM (QLIKE)": -6.277671236909906,
+        "p (QLIKE)": 3.8555308099232246e-10
+      },
+      "Echo state network | HAR-X (VIX, leverage) | 1": {
+        "DM (MSE)": -4.041521319594523,
+        "p (MSE)": 5.424079543874421e-05,
+        "DM (QLIKE)": -3.3726388465762174,
+        "p (QLIKE)": 0.0007525537162682375
+      },
+      "Photonic ring reservoir | HAR | 1": {
+        "DM (MSE)": -10.455567640040693,
+        "p (MSE)": 3.221634667999545e-25,
+        "DM (QLIKE)": -6.186386898469304,
+        "p (QLIKE)": 6.862038537448459e-10
+      },
+      "Photonic ring reservoir | HAR-X (VIX, leverage) | 1": {
+        "DM (MSE)": -5.270130660074414,
+        "p (MSE)": 1.4451936233865128e-07,
+        "DM (QLIKE)": -3.4147046636772243,
+        "p (QLIKE)": 0.0006457321459372061
+      },
+      "ESN + HAR-X features | HAR | 1": {
+        "DM (MSE)": -10.112795910292904,
+        "p (MSE)": 1.0189545446113268e-23,
+        "DM (QLIKE)": -6.262135645286154,
+        "p (QLIKE)": 4.2553535221440673e-10
+      },
+      "ESN + HAR-X features | HAR-X (VIX, leverage) | 1": {
+        "DM (MSE)": -4.050113904582514,
+        "p (MSE)": 5.2295983198264e-05,
+        "DM (QLIKE)": -3.0055334979959363,
+        "p (QLIKE)": 0.0026698542727133963
+      },
+      "Pool: HAR-X + ESN | HAR | 1": {
+        "DM (MSE)": -11.21609966385268,
+        "p (MSE)": 1.0367524691996786e-28,
+        "DM (QLIKE)": -7.142713941340766,
+        "p (QLIKE)": 1.1067300477649328e-12
+      },
+      "Pool: HAR-X + ESN | HAR-X (VIX, leverage) | 1": {
+        "DM (MSE)": -7.54702204865712,
+        "p (MSE)": 5.6377265125254876e-14,
+        "DM (QLIKE)": -5.887696096549253,
+        "p (QLIKE)": 4.283277575479058e-09
+      },
+      "Echo state network | HAR | 5": {
+        "DM (MSE)": -5.198871494697843,
+        "p (MSE)": 2.1193116128256767e-07,
+        "DM (QLIKE)": -4.886027692100733,
+        "p (QLIKE)": 1.0748243064261956e-06
+      },
+      "Echo state network | HAR-X (VIX, leverage) | 5": {
+        "DM (MSE)": 0.2112230255992012,
+        "p (MSE)": 0.8327254819731854,
+        "DM (QLIKE)": -0.8931919425852204,
+        "p (QLIKE)": 0.37181550407925207
+      },
+      "Photonic ring reservoir | HAR | 5": {
+        "DM (MSE)": -4.421668995078325,
+        "p (MSE)": 1.009032784344569e-05,
+        "DM (QLIKE)": -4.250474901200642,
+        "p (QLIKE)": 2.188569378623174e-05
+      },
+      "Photonic ring reservoir | HAR-X (VIX, leverage) | 5": {
+        "DM (MSE)": 1.3167796388412238,
+        "p (MSE)": 0.1879982942038872,
+        "DM (QLIKE)": -0.7267606597480515,
+        "p (QLIKE)": 0.467420954316877
+      },
+      "ESN + HAR-X features | HAR | 5": {
+        "DM (MSE)": -5.311946808235215,
+        "p (MSE)": 1.1519413306671076e-07,
+        "DM (QLIKE)": -4.819739850808601,
+        "p (QLIKE)": 1.4982593044694522e-06
+      },
+      "ESN + HAR-X features | HAR-X (VIX, leverage) | 5": {
+        "DM (MSE)": 0.6903639298965877,
+        "p (MSE)": 0.4900109086362659,
+        "DM (QLIKE)": -0.1255783580662506,
+        "p (QLIKE)": 0.9000728726542008
+      },
+      "Pool: HAR-X + ESN | HAR | 5": {
+        "DM (MSE)": -7.1294217985259785,
+        "p (MSE)": 1.217613867877873e-12,
+        "DM (QLIKE)": -5.708831808944575,
+        "p (QLIKE)": 1.231784061475082e-08
+      },
+      "Pool: HAR-X + ESN | HAR-X (VIX, leverage) | 5": {
+        "DM (MSE)": -2.471165572258746,
+        "p (MSE)": 0.013514389753906885,
+        "DM (QLIKE)": -2.999443021265106,
+        "p (QLIKE)": 0.002723695880200922
+      },
+      "Echo state network | HAR | 22": {
+        "DM (MSE)": -0.07974467519123195,
+        "p (MSE)": 0.9364448859126933,
+        "DM (QLIKE)": -0.023091518116205734,
+        "p (QLIKE)": 0.98157858777632
+      },
+      "Echo state network | HAR-X (VIX, leverage) | 22": {
+        "DM (MSE)": 2.2351415918986626,
+        "p (MSE)": 0.02547090081467229,
+        "DM (QLIKE)": 1.5222138990984044,
+        "p (QLIKE)": 0.12804583112980847
+      },
+      "Photonic ring reservoir | HAR | 22": {
+        "DM (MSE)": 0.390759908553579,
+        "p (MSE)": 0.695998494488476,
+        "DM (QLIKE)": -0.23144050855115203,
+        "p (QLIKE)": 0.816986126994382
+      },
+      "Photonic ring reservoir | HAR-X (VIX, leverage) | 22": {
+        "DM (MSE)": 2.7468151135960466,
+        "p (MSE)": 0.006048500544271896,
+        "DM (QLIKE)": 1.6225290086956201,
+        "p (QLIKE)": 0.10478018996721726
+      },
+      "ESN + HAR-X features | HAR | 22": {
+        "DM (MSE)": -0.5846619494333325,
+        "p (MSE)": 0.5588127287729756,
+        "DM (QLIKE)": -0.2152507086004619,
+        "p (QLIKE)": 0.8295843991299765
+      },
+      "ESN + HAR-X features | HAR-X (VIX, leverage) | 22": {
+        "DM (MSE)": 2.418407105672981,
+        "p (MSE)": 0.015639344131866746,
+        "DM (QLIKE)": 1.8579026199103206,
+        "p (QLIKE)": 0.0632667602143049
+      },
+      "Pool: HAR-X + ESN | HAR | 22": {
+        "DM (MSE)": -2.5541628804621457,
+        "p (MSE)": 0.010686342546859375,
+        "DM (QLIKE)": -2.349278292965529,
+        "p (QLIKE)": 0.018865136785755448
+      },
+      "Pool: HAR-X + ESN | HAR-X (VIX, leverage) | 22": {
+        "DM (MSE)": 1.0211282902967591,
+        "p (MSE)": 0.30726423550720533,
+        "DM (QLIKE)": 0.7317522071447233,
+        "p (QLIKE)": 0.464368815828497
+      }
+    },
+    "esn_vs_harx_by_period": {
+      "h = 1": {
+        "2005-2007": 0.9497260700322968,
+        "2008-2009 (crisis)": 0.9396232526118821,
+        "2010-2018": 0.9733789557972824
+      },
+      "h = 5": {
+        "2005-2007": 0.939521164671443,
+        "2008-2009 (crisis)": 0.9703753017996596,
+        "2010-2018": 1.0246939689149623
+      },
+      "h = 22": {
+        "2005-2007": 0.9701220437495819,
+        "2008-2009 (crisis)": 1.2710975170737842,
+        "2010-2018": 1.0826835327301791
+      }
+    }
+  },
+  "sensitivity": {
+    "seeds": {
+      "esn h=1": {
+        "single reservoirs: mean": 0.8707309682965958,
+        "min": 0.8675219062030406,
+        "max": 0.8758480205107538,
+        "ensemble": 0.868298072882421
+      },
+      "ring h=1": {
+        "single reservoirs: mean": 0.8706204500451905,
+        "min": 0.8692327606110962,
+        "max": 0.8729207889525761,
+        "ensemble": 0.8703123851759413
+      },
+      "esn h=5": {
+        "single reservoirs: mean": 0.8883879354981501,
+        "min": 0.8778551127117669,
+        "max": 0.9030557155504756,
+        "ensemble": 0.868111177601836
+      },
+      "ring h=5": {
+        "single reservoirs: mean": 0.8831287467321806,
+        "min": 0.8781419862094298,
+        "max": 0.8921827646923294,
+        "ensemble": 0.8806064708224649
+      },
+      "esn h=22": {
+        "single reservoirs: mean": 1.010968123640239,
+        "min": 1.0002080396695276,
+        "max": 1.028749390494213,
+        "ensemble": 0.9961890447568466
+      },
+      "ring h=22": {
+        "single reservoirs: mean": 1.056899177858581,
+        "min": 1.0194855675754628,
+        "max": 1.100414026297062,
+        "ensemble": 1.02157604976601
+      }
+    },
+    "size": {
+      "echo state network": {
+        "25": 0.8699052867568418,
+        "50": 0.865872252457486,
+        "100": 0.8664991450707823,
+        "200": 0.8713913829580768,
+        "400": 0.8845616688147607
+      },
+      "photonic ring reservoir": {
+        "25": 0.8881395855167822,
+        "50": 0.8779071173874605,
+        "100": 0.8731202782116047,
+        "200": 0.8707227739588533,
+        "400": 0.8709273216365154
+      }
+    }
+  },
+  "checks": [
+    {
+      "area": "Physics",
+      "check": "Mackey-Glass, 84 steps ahead: ESN error relative to the linear model",
+      "value": 0.15354436101599714,
+      "threshold": "< 0.5",
+      "status": "PASS"
+    },
+    {
+      "area": "Physics",
+      "check": "memory capacity never exceeds the number of nodes (Jaeger bound)",
+      "value": 70.53825307014993,
+      "threshold": "<= 100",
+      "status": "PASS"
+    },
+    {
+      "area": "Physics",
+      "check": "memory falls beyond the edge of chaos, both reservoirs (MC at the largest gain / peak MC)",
+      "value": 0.6214172048601319,
+      "threshold": "< 0.8",
+      "status": "PASS"
+    },
+    {
+      "area": "Physics",
+      "check": "ring reservoir: memory collapses once the feedback gain exceeds 1",
+      "value": 0.009438788730753345,
+      "threshold": "< 0.1",
+      "status": "PASS"
+    },
+    {
+      "area": "Forecast",
+      "check": "ESN beats HAR at one day (MSE ratio)",
+      "value": 0.868298072882421,
+      "threshold": "< 1",
+      "status": "PASS"
+    },
+    {
+      "area": "Forecast",
+      "check": "HAR beats the random walk at every horizon (sanity of the benchmark)",
+      "value": 1.3201861151897878,
+      "threshold": "> 1",
+      "status": "PASS"
+    },
+    {
+      "area": "Forecast",
+      "check": "pool of HAR-X and ESN is never worse than HAR-X by more than 3% (MSE)",
+      "value": 1.0188227175278408,
+      "threshold": "< 1.03",
+      "status": "PASS"
+    },
+    {
+      "area": "Robustness",
+      "check": "largest spread of MSE ratio across random reservoirs",
+      "value": 0.08092845872159926,
+      "threshold": "< 0.10",
+      "status": "PASS"
+    }
+  ]
+}
